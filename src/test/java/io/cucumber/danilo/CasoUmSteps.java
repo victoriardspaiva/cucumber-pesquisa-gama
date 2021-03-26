@@ -1,46 +1,30 @@
 package io.cucumber.danilo;
 
-import static org.junit.Assert.assertEquals;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import io.cucumber.java.pt.Dado;
-import io.cucumber.java.pt.Entao;
+import static io.cucumber.danilo.CompartihadoSteps.*;
+import static io.cucumber.danilo.config.Config.*;
+import io.cucumber.java.pt.*;
 
 public class CasoUmSteps {
 
-    public CasoUmSteps() {
-        System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
-        browser = new ChromeDriver();
-    }
-
-    public WebDriver browser;
-
     @Dado("que eu estou no site da gama academy")
-    public void siteGamaHome() {
-        browser.get("https://www.gama.academy/");
+    public void paginaHome() {
+        siteGamaHome();
     }
 
-    @Dado("clico para fechar a propaganda")
-    public void clico_para_fechar_a_propaganda() throws InterruptedException {
-        Thread.sleep(4000);
-        browser.findElement(By.cssSelector(".ub-emb-close")).click();
+    @Quando("clico para fechar a propaganda")
+    public void propaganda() throws InterruptedException {
+        fecharPropaganda();
     }
 
-    @Dado("clico na opcao {string}")
+    @E("clico em {string}")
     public void clico_na_opcao(String string) {
-        WebElement input1 = browser.findElement(By.cssSelector(".nav-menu a"));
-        input1.click();
-
+        seletorQueryCss(".nav-menu a").click();
     }
 
     @Entao("deve ver o item do {string}")
     public void deve_ver_o_item_do(String string) {
-        WebElement input = browser.findElement(By.cssSelector(".manifesto h1.heading.lado"));
-        assertEquals(string, input.getText());
-        browser.quit();
+        seletorQueryCss(".manifesto h1.heading.lado");
+        fechar();
     }
 
 }
