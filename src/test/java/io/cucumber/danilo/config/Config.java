@@ -32,10 +32,4 @@ public static List<WebElement> seletorQueryCssTodos(String seletor){
     return browser.findElements(By.cssSelector(seletor));
 }
 
-public static void abrir() {
-}
-
-public static void fechar(String string) {
-}
-
 }

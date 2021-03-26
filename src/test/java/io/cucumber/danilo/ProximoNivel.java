@@ -15,7 +15,7 @@ public class ProximoNivel {
     @Quando("clico na opcao {string}")
     public void proximoNivel(String string) {
         seletorQueryCss("#lp-pom-button-849").click();
-        fechar("https://pages.gama.academy/curso-de-product-management/");
+        fechar();
     }
 
     @Entao("devo ver o valor e o botao comprar agora")
