@@ -7,11 +7,16 @@ import io.cucumber.java.pt.*;
 public class FullStackSteps {
 
     @Dado("que eu estou na pagina home")
-    public void que_eu_estou_na_pagina_home() {
+    public void que_eu_estou_na_pagina_home() throws InterruptedException {
         siteGamaHome();
+        fecharPropaganda();
     }
 
-    @Quando("clico no botao {string}")
+    // @Quando("clico para fechar a propaganda")
+    // public void fechandoPropag() throws InterruptedException{
+    // }
+
+    @E("clico no botao {string}")
     public void fullstack(String string) {
         seletorQueryCss(".bt-chamada btc-alt w-button").click();
     }
